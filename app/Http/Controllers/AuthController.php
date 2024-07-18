@@ -2,35 +2,28 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
+use App\Models\User; 
+
 
 class AuthController
 {
-    public function register(Request $request)
-    {
-        dd($request);
-        // Validation
-        //   $fields = $request->validate([
-        //     'firstname' => ['required', 'max:255'],
-        //     'lastname' => ['required', 'max:255'],
-        //     'email' => ['required', 'email', 'max:255', 'unique:users'],
-        //     'password' => ['required', 'confirmed'],
-        // ]);
+    public function register(Request $request){
 
-        // Register
-        // $user = User::create([
-        //     'name' => $fields['name'],
-        //     'email' => $fields['email'],
-        //     'password' => Hash::make($fields['password']), // Hash the password
-        // ]);
+        sleep(1);
+        $fields = $request->validate([
+                'name' => ['required', 'max:255'],
+                'email' => ['required', 'email', 'max:255', 'unique:users'],
+                'password' => ['required', 'confirmed'],
+            ]);
+        
+        $user = User::create($fields);
 
-        // Log in
-        // Auth::login($user);
+        Auth::login($user);
+        
+        return redirect()->route('home');
 
-        // // Redirect or return a response
-        // return redirect()->route('home');
     }
 }

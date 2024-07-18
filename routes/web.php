@@ -8,11 +8,9 @@ use App\Http\Controllers\AuthController;
 
 
 Route::get('/', function () {
-    return Inertia::render('Home', [
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
+    return Inertia::render('Home');
+})->name('home');
+
 Route::get('/Contact', function () {
     return Inertia::render('Contact');
 });
@@ -25,6 +23,8 @@ Route::get('/SignUp', function () {
     return Inertia::render('Signup');
 });
 
-Route::inertia('/register', 'Signup')->name('register');
+
+Route::inertia('/register', 'Auth/Register')->name('register');
 Route::post('/register', [AuthController::class, 'register']);
+
 

@@ -2,15 +2,15 @@
     <nav class="bg-emerald-200 p-2 shadow-md">
       <div class="container mx-auto flex justify-between items-center">
         <div class="text-2xl font-semibold">
-          <a href="#" class="text-teal-500 hover:text-gray-600 font-bold"><span class="text-emerald-500 font-bold text-3xl hover:text-gray-600 font-bold">D</span>code</a>
+          <a href="#" class="text-teal-500 hover:text-gray-600 font-bold"><span class="text-emerald-500 text-3xl hover:text-gray-600 font-bold">D</span>code</a>
         </div>
         <div class="hidden md:flex space-x-8">
-          <a href="#" class="text-black hover:text-gray-600 font-bold">Home</a>
+          <Link :href="route('home')" class="text-black hover:text-gray-600 font-bold">Home</Link>
           <a href="#" class="text-black hover:text-gray-600 font-bold">Services</a>
           <a href="/Contact" class="text-black hover:text-gray-600 font-bold">Contact</a>
 
           <Link href="/LogIn" class="text-black hover:text-gray-600 font-bold">Log In</Link>
-          <Link href="/SignUp" class="text-black hover:text-gray-600 font-bold">Sign Up</Link>
+          <Link :href="route('register')" class="text-black hover:text-gray-600 font-bold">Register</Link>
 
 
         </div>
