@@ -1,73 +1,51 @@
 <template>
+
     <Header />
-    <v-container fluid>
-      <v-row class="min-h-screen py-6 bg-emerald-100">
-        <v-col cols="12" lg="10" class="mx-auto">
-          <v-card class="rounded-xl shadow-lg">
-            <v-row>
-              <v-col cols="12" lg="6" class="bg-no-repeat bg-cover bg-center" style="background-image: url('images/signup.png');">
-                <!-- Image will cover this entire column -->
-              </v-col>
-              <v-col cols="12" lg="6" class="py-16 px-12">
-                <h2 class="text-3xl mb-4 font-bold">Register</h2>
-                <p class="mb-4">
-                  Create your account. It’s free and only takes a minute
-                </p>
-                <v-form @submit.prevent="registerUser">
-                  <v-row>
-                    <v-col cols="6">
-                      <v-text-field v-model="form.name" label="Name" outlined></v-text-field>
-                    </v-col>
-                    <v-col cols="6">
-                      <v-text-field v-model="form.lastName" label="Lastname" outlined></v-text-field>
-                    </v-col>
-                  </v-row>
-                  <v-text-field v-model="form.email" label="Email" type="email" outlined></v-text-field>
-                  <v-text-field v-model="form.password" label="Password" type="password" outlined></v-text-field>
-                  <v-text-field v-model="form.password_confirmation" label="Confirm Password" type="password" outlined></v-text-field>
-                  <v-row class="mt-5">
-                    <v-col cols="12">
-                      <v-checkbox v-model="form.acceptTerms" label="I accept the Terms of Use & Privacy Policy"></v-checkbox>
-                    </v-col>
-                  </v-row>
-                  <v-row class="mt-5 text-center">
-                    <v-col cols="12">
-                      <v-btn color="teal" dark type="submit">Register Now</v-btn>
-                    </v-col>
-                  </v-row>
-                </v-form>
-              </v-col>
-            </v-row>
-          </v-card>
-        </v-col>
-      </v-row>
-    </v-container>
-  </template>
+        <h1 class="title">Register Account</h1>
+        <div class="w-2/4 mx-auto">
+            <form @submit.prevent="submit">
+                <div class="mb-6">
+                    <label>First Name</label>
+                    <input type="text" v-model="form.firstname">
+                </div>
+                <div class="mb-6">
+                    <label>Last Name</label>
+                    <input type="text" v-model="form.lastname">
+                </div>
+                <div class="mb-6">
+                    <label>Email</label>
+                    <input type="text" v-model="form.email">
+                </div>
+                <div class="mb-6">
+                    <label>Password</label>
+                    <input type="password" v-model="form.password">
+                </div>
+                <div class="mb-6">
+                    <label>Confirm Password</label>
+                    <input type="password" v-model="form.confirmPassword">
+                </div>
+                <div>
+                    <p class="text-slate-600 mb-2">Already a user? <a href="#" class="text-link"></a></p>
+                    <button class="primary-button">Register</button>
+                </div>
+            </form>
+        </div>
+</template>
+<script setup>
+import Header from "@/Layouts/Header.vue";
+import {reactive} from 'vue';
+import {router} from '@inertiajs/vue3';
 
-  <script>
-  import Header from "@/Layouts/Header.vue";
-  import { useForm } from '@inertiajs/vue3';
+const form = reactive({
+    firstname: null,
+    lastname: null,
+    email: null,
+    password: null,
+    confirmPassword: null,
+});
 
-  export default {
-    components: {
-      Header,
-    },
-    data() {
-      return {
-        form: useForm({
-          name: '',
-          lastName: '',
-          email: '',
-          password: '',
-          password_confirmation: '',
-          acceptTerms: false,
-        }),
-      };
-    },
-    methods: {
-      registerUser() {
-        this.form.post('/register');
-      },
-    },
-  };
-  </script>
+const submit = () =>{
+    router.post('/register', form);
+};
+
+</script>
