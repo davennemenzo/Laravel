@@ -7,7 +7,7 @@
         <div class="hidden md:flex space-x-8">
           <a href="#" class="text-black hover:text-gray-600 font-bold">Home</a>
           <a href="#" class="text-black hover:text-gray-600 font-bold">Services</a>
-          <a href="#" class="text-black hover:text-gray-600 font-bold">Contact</a>
+          <a href="/Contact" class="text-black hover:text-gray-600 font-bold">Contact</a>
 
           <Link href="/LogIn" class="text-black hover:text-gray-600 font-bold">Log In</Link>
           <Link href="/SignUp" class="text-black hover:text-gray-600 font-bold">Sign Up</Link>
