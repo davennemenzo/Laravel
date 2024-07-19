@@ -6,10 +6,12 @@
         </div>
         <div class="hidden md:flex space-x-8">
           <Link :href="route('home')" class="text-black hover:text-gray-600 font-bold">Home</Link>
+          <Link :href="route('dashboard')" class="text-black hover:text-gray-600 font-bold">Dashboard</Link>
           <a href="#" class="text-black hover:text-gray-600 font-bold">Services</a>
+
           <a href="/Contact" class="text-black hover:text-gray-600 font-bold">Contact</a>
 
-          <Link href="/LogIn" class="text-black hover:text-gray-600 font-bold">Log In</Link>
+          <Link :href="route('login')" class="text-black hover:text-gray-600 font-bold">Log In</Link>
           <Link :href="route('register')" class="text-black hover:text-gray-600 font-bold">Register</Link>
 
 
