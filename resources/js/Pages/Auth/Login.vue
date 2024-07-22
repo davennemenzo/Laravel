@@ -16,7 +16,7 @@ const submit = () => {
 </script>
 
 <template>
-    <Header/>
+    <Header />
     <div>
         <v-container fluid>
             <v-row class="min-h-screen py-6 bg-emerald-100">
@@ -24,59 +24,67 @@ const submit = () => {
                     <v-card class="rounded-xl shadow-lg">
                         <v-row>
                             <v-col cols="12" lg="6" class="py-16 px-12">
-                                <h2 class="text-3xl mb-4 font-bold">Log In</h2>
-                                <div class="w-2/4 mx-auto">
-                                    <form @submit.prevent="submit">
-                                        <div>
+                                <v-card class="mx-auto" max-width="500">
+                                    <v-card-title class="justify-center">
+                                        <h2
+                                            class="text-3xl mb-4 font-bold font-dm-serif-display"
+                                        >
+                                            Log In
+                                        </h2>
+                                    </v-card-title>
+                                    <v-card-text>
+                                        <v-form @submit.prevent="submit">
                                             <v-text-field
                                                 v-model="form.email"
                                                 label="Email"
-                                                class="text-bold"
+                                                outlined
+                                                dense
+                                                class="mb-3"
+                                                :error-messages="
+                                                    form.errors.email
+                                                "
                                             ></v-text-field>
-                                            <small class="text-red-400">{{
-                                                form.errors.email
-                                            }}</small>
+
                                             <v-text-field
                                                 v-model="form.password"
                                                 label="Password"
-                                                class="text-bold"
+                                                outlined
+                                                dense
                                                 type="password"
+                                                class="mb-2"
+                                                :error-messages="
+                                                    form.errors.password
+                                                "
                                             ></v-text-field>
-                                            <small class="text-red-400">{{
-                                                form.errors.password
-                                            }}</small>
-                                        </div>
 
-                                        <div>
-                                            <div>
-                                                <label>Remember me </label>
+                                            <div class="mb-4">
+                                                <label>Remember me</label>
                                                 <input
                                                     type="checkbox"
                                                     v-model="form.remember"
                                                     class="border border-black"
                                                 />
                                             </div>
-                                            <p class="text-slate-600 mb-2">
+
+                                            <p class="text-center mb-4">
                                                 Need an Account?
                                                 <a
                                                     :href="route('register')"
-                                                    class="text-link"
+                                                    class="text-teal-accent-4"
                                                     >Register</a
                                                 >
                                             </p>
-                                        </div>
 
-                                        <div>
                                             <v-btn
-                                                class="me-4 w-full py-4 pb-8 text-primary hover:opacity-80"
+                                                class="w-full py-4 pb-8 hover:opacity-80 bg-teal-lighten-1 text-center"
                                                 type="submit"
                                                 :disabled="form.processing"
                                             >
-                                                submit
+                                                Submit
                                             </v-btn>
-                                        </div>
-                                    </form>
-                                </div>
+                                        </v-form>
+                                    </v-card-text>
+                                </v-card>
                             </v-col>
 
                             <v-col
@@ -85,10 +93,9 @@ const submit = () => {
                                 class="bg-no-repeat bg-cover bg-center"
                                 style="
                                     background-image: url('images/signup.png');
+                                    background-size: contain;
                                 "
-                            >
-                                <!-- Image will cover this entire column -->
-                            </v-col>
+                            ></v-col>
                         </v-row>
                     </v-card>
                 </v-col>

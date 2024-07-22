@@ -12,9 +12,9 @@ Route::get('/', function () {
     return Inertia::render('Home');
 })->name('home');
 
-Route::get('/Contact', function () {
-    return Inertia::render('Contact');
-})->name('contact');
+Route::get('Layouts/Services', function () {
+    return Inertia::render('Services');
+})->name('services');
 
 Route::get('/LogIn', function () {
     return Inertia::render('Login');

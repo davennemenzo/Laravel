@@ -13,7 +13,7 @@ import Header from "@/Layouts/Header.vue";
 
 import Main from "@/Layouts/Main.vue";
 import Info from "@/Layouts/Info.vue";
-import About from "@/Layouts/About.vue";
+import About from "@/Layouts/Services.vue";
 import Footer from "@/Layouts/Footer.vue";
 
 

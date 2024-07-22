@@ -20,15 +20,13 @@
                     class="text-black hover:text-gray-600 font-bold"
                     >Dashboard</Link
                 >
-                <a href="#" class="text-black hover:text-gray-600 font-bold"
-                    >Services</a
+                <Link
+                    :href="route('services')"
+                    class="text-black hover:text-gray-600 font-bold"
+                    >Services  </Link
                 >
 
-                <a
-                    href="/Contact"
-                    class="text-black hover:text-gray-600 font-bold"
-                    >Contact</a
-                >
+                
 
                 <Link
                     :href="route('login')"

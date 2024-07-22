@@ -21,55 +21,93 @@ const submit = () => {
 <template>
     <Header />
 
-    <div class="w-2/4 mx-auto my-10">
-        <v-card>
-            <v-card-title class="text-center">Register Account</v-card-title>
+    <v-row class="min-h-screen py-6 bg-emerald-100">
+        <v-row class="justify-center">
+            <v-col cols="12" lg="10" class="mx-auto">
+                <v-card class="rounded-xl shadow-lg mt-1">
+                    <v-row>
+                        <v-col cols="12" lg="6" class="py-16 px-12">
+                            <v-card class="mx-auto" max-width="500">
+                                <v-card-title class="justify-center">
+                                    <h2 class="text-3xl mb-4 font-bold">
+                                        Register Account
+                                    </h2>
+                                </v-card-title>
+                                <v-card-text>
+                                    <v-form @submit.prevent="submit">
+                                        <v-text-field
+                                            v-model="form.name"
+                                            label="Name"
+                                            outlined
+                                            dense
+                                            class="mb-3"
+                                            :error-messages="form.errors.name"
+                                        ></v-text-field>
 
-            <v-form @submit.prevent="submit" class="p-5">
-                <div class="mb-6">
-                    <v-text-field
-                        type="text"
-                        v-model="form.name"
-                        label="Name"
-                    />
-                    <small class="text-red-400">{{ form.errors.name }}</small>
-                </div>
-                <div class="mb-6">
-                    <v-text-field
-                        type="text"
-                        v-model="form.email"
-                        label="Email"
-                    />
-                    <small class="text-red-400">{{ form.errors.email }}</small>
-                </div>
-                <div class="mb-6">
-                    <v-text-field
-                        type="password"
-                        v-model="form.password"
-                        label="Password"
-                    />
-                    <small class="text-red-400">{{
-                        form.errors.password
-                    }}</small>
-                </div>
-                <div class="mb-6">
-                    <v-text-field
-                        type="password"
-                        v-model="form.password_confirmation"
-                        label="Confirm Password"
-                    />
-                </div>
+                                        <v-text-field
+                                            v-model="form.email"
+                                            label="Email"
+                                            outlined
+                                            dense
+                                            class="mb-3"
+                                            :error-messages="form.errors.email"
+                                        ></v-text-field>
 
-                <div>
-                    <p class="text-slate-600 mb-2 text-center">
-                        Already a have an account?
-                        <a :href="route('login')" class="hover">Log in</a>
-                    </p>
-                    <v-btn type="submit" class="w-100 bg-primary"
-                        >Register</v-btn
-                    >
-                </div>
-            </v-form>
-        </v-card>
-    </div>
+                                        <v-text-field
+                                            v-model="form.password"
+                                            label="Password"
+                                            outlined
+                                            dense
+                                            type="password"
+                                            class="mb-3"
+                                            :error-messages="
+                                                form.errors.password
+                                            "
+                                        ></v-text-field>
+
+                                        <v-text-field
+                                            v-model="form.password_confirmation"
+                                            label="Confirm Password"
+                                            outlined
+                                            dense
+                                            type="password"
+                                            class="mb-3"
+                                        ></v-text-field>
+
+                                        <p class="text-center mb-2">
+                                            Already have an account?
+                                            <a
+                                                :href="route('login')"
+                                                class="text-teal-accent-4"
+                                                >Log in</a
+                                            >
+                                        </p>
+
+                                        <v-btn
+                                            type="submit"
+                                            class="me-4 w-full py-4 pb-8 hover:opacity-80 bg-teal-lighten-1 text-center"
+                                            :disabled="form.processing"
+                                        >
+                                            Register
+                                        </v-btn>
+                                    </v-form>
+                                </v-card-text>
+                            </v-card>
+                        </v-col>
+
+                        <v-col
+                            cols="12"
+                            lg="6"
+                            class="bg-no-repeat bg-center"
+                            style="
+                                background-image: url('images/register.png');
+                                background-size: contain;
+                            "
+                        >
+                        </v-col>
+                    </v-row>
+                </v-card>
+            </v-col>
+        </v-row>
+    </v-row>
 </template>
