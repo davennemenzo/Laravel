@@ -28,7 +28,12 @@ Route::get('/Register', function () {
     return Inertia::render('Register');
 })->name('register');
 
-Route::inertia('/Dashboard', 'Dashboard', ['users' => User::paginate()])->name('dashboard');
+Route::get('/edit', function () {
+    return Inertia::render('Edit');
+});
+
+
+Route::inertia('/Dashboard', 'Dashboard', ['users' => User::paginate(10)])->name('dashboard');
 
 
 Route::inertia('/register', 'Auth/Register')->name('register');
@@ -37,4 +42,12 @@ Route::post('/register', [AuthController::class, 'register']);
 Route::inertia('/login', 'Auth/Login')->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 
+
+
+    Route::get('/user/{user}/edit', [AuthController::class, 'edit'])->name('user.edit');
+    Route::put('/user/{user}', [AuthController::class, 'update']);
+
+
+    Route::delete('user/{user}', [AuthController::class, 'destroy']);
+    // ->name('user.delete');
 

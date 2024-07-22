@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use Inertia\Inertia;
+use Illuminate\Support\Facades\Redirect;
 
 
 class AuthController
@@ -53,4 +55,30 @@ class AuthController
         $request->session()->regenerateToken();
         return redirect()->route('home');
     }
+
+    public function destroy(User $user)
+    {
+        // $user = User::findOrFail($id);
+        $user->delete();
+        return redirect()->route('dashboard');
+    }
+
+    public function edit(User $user){
+        return Inertia::render('Edit',[
+            'user'=>$user
+        ]);
+
+    }
+
+   public function update(Request $request, User $user){
+        $validated = $request->validate([
+            'name' => ['required', 'max:255'],
+            'email' => ['required', 'email', 'max:255', ],
+
+        ]);
+
+
+        $user ->update($validated);
+        return Redirect::route('dashboard');
+   }
 }

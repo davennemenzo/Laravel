@@ -21,11 +21,11 @@ const submit = () => {
 <template>
     <Header />
 
-    <div class="w-2/4 mx-auto my-10 ">
-        <v-card >
-            <v-card-title class="text-center " >Register Account</v-card-title>
+    <div class="w-2/4 mx-auto my-10">
+        <v-card>
+            <v-card-title class="text-center">Register Account</v-card-title>
 
-            <v-form @submit.prevent="submit" class="p-5 ">
+            <v-form @submit.prevent="submit" class="p-5">
                 <div class="mb-6">
                     <v-text-field
                         type="text"
@@ -53,7 +53,6 @@ const submit = () => {
                     }}</small>
                 </div>
                 <div class="mb-6">
-
                     <v-text-field
                         type="password"
                         v-model="form.password_confirmation"
@@ -66,7 +65,9 @@ const submit = () => {
                         Already a have an account?
                         <a :href="route('login')" class="hover">Log in</a>
                     </p>
-                    <v-btn class="w-100 bg-primary">Register</v-btn>
+                    <v-btn type="submit" class="w-100 bg-primary"
+                        >Register</v-btn
+                    >
                 </div>
             </v-form>
         </v-card>
